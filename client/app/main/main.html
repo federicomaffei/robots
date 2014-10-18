@@ -1,0 +1,58 @@
+<ul>
+	<li>
+		<span>
+			Enter the arena coordinates (width and length):
+		</span>
+		<span>
+			<input type='text' ng-model='arenaX'>
+		</span>
+		<span>
+			<input type='text' ng-model='arenaY'>
+		</span>
+	</li>
+	<li>
+		<form ng-submit='addRobot()'>
+			<span>
+				Enter the first position of the robot (x, y and orientation):
+			</span>
+			<span>
+				<input type='text' ng-model='firstX'>
+			</span>
+			<span>
+				<input type='text' ng-model='firstY'>
+			</span>
+			<span>
+				<select ng-model='firstOrientation'>
+					<option value='1'>N</option>
+					<option value='2'>E</option>
+					<option value='3'>S</option>
+					<option value='4'>W</option>
+				</select>
+			</span>
+			<span>
+				<input type='submit'>
+			</span>
+		</form>
+	</li>
+	<li>
+		<ul>
+		<li ng-repeat='robot in robotsPositions'>
+				<form ng-submit='updateRobot(robot._id)'>
+					<span>
+						Enter the action to make the robot do:
+					</span>
+					<span>
+						<select ng-model='actionType'>
+							<option value='M'>Move</option>
+							<option value='R'>Rotate Clockwise</option>
+							<option value='L'>Rotate Counterclockwise</option>
+						</select>
+					</span>
+					<span>
+						<input type='submit'>
+					</span>
+				</form>
+			</li>
+		</ul>
+	</li>
+</ul>
