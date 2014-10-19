@@ -60,6 +60,4 @@ describe('Model: Robot', function() {
 			expect(robot.executeActions('MMRMMRMRRM', '3 3 E')).toEqual('5 1 E');
 		});
 	});
-
-	
 });

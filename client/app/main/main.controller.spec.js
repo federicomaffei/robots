@@ -12,7 +12,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/robots')
-      .respond([{"_id":"1","position":"5 1 E"}, {"_id":"2","position":"3 3 E"}]);
+      .respond([{'_id':'1','position':'5 1 E'}, {'_id':'2','position':'3 3 E'}]);
 
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
@@ -27,6 +27,6 @@ describe('Controller: MainCtrl', function () {
 
   it('should return the position of each robot', function () {
     $httpBackend.flush();
-    expect(scope.robots[0].position).toEqual("5 1 E");
+    expect(scope.robots[0].position).toEqual('5 1 E');
   });
 });

@@ -1,8 +1,8 @@
 <ul>
 	<li>
-		<span>
-			Enter the arena coordinates (width and length):
-		</span>
+		Enter the arena coordinates (width and length):
+	</li>
+	<li>
 		<span>
 			<input type='text' ng-model='arenaX'>
 		</span>
@@ -10,11 +10,15 @@
 			<input type='text' ng-model='arenaY'>
 		</span>
 	</li>
+</ul>
+<ul>
+	<li>
+		<span>
+			Create a robot entering its first position (x, y and orientation):
+		</span>
+	</li>
 	<li>
 		<form ng-submit='addRobot()'>
-			<span>
-				Create a robot entering its first position (x, y and orientation):
-			</span>
 			<span>
 				<input type='text' ng-model='firstX'>
 			</span>
@@ -34,18 +38,24 @@
 			</span>
 		</form>
 	</li>
-	<li ng-repeat='robot in robots'>
+</ul>
+<ul>
+	<li ng-repeat='robot in robotsPositions'>
 		<form ng-submit='updateRobot(robot._id, actionList)'>
-			<span>
-				Enter the list of actions for the robot:
-			</span>
-			<span>
-				<input type='text' ng-model='actionList'>
-			</span>
-			<span>
-				<input type='submit'></input>
-			</span>
+			<ul>
+				<li>
+					Enter the list of actions for the robot:
+				</li>
+				<li>
+					<input type='text' ng-model='actionList'>
+				</li>
+				<li>
+					<input type='submit'></input>
+				</li>
+				<li>
+					Robot position: {{robot.position}}
+				</li>
+			</ul>
 		</form>
-		{{robot.position}}
 	</li>
 </ul>
