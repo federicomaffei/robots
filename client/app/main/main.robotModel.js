@@ -3,9 +3,9 @@
 angular.module('robotsApp')
 	.service('Robot', function(){
 
-		this.xCoordinate = 0;
-		this.yCoordinate = 0;
-		this.orientation = 1;
+		var xCoordinate;
+		var yCoordinate;
+		var orientation;
 		this.cardinals = { 1: 'N', 2: 'E', 3: 'S', 4: 'W' };
 
 

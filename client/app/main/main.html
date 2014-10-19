@@ -13,7 +13,7 @@
 	<li>
 		<form ng-submit='addRobot()'>
 			<span>
-				Enter the first position of the robot (x, y and orientation):
+				Create a robot entering its first position (x, y and orientation):
 			</span>
 			<span>
 				<input type='text' ng-model='firstX'>
@@ -30,29 +30,25 @@
 				</select>
 			</span>
 			<span>
-				<input type='submit'>
+				<input type='submit'></input>
 			</span>
 		</form>
 	</li>
-	<li>
-		<ul>
-		<li ng-repeat='robot in robotsPositions'>
-				<form ng-submit='updateRobot(robot._id)'>
-					<span>
-						Enter the action to make the robot do:
-					</span>
-					<span>
-						<select ng-model='actionType'>
-							<option value='M'>Move</option>
-							<option value='R'>Rotate Clockwise</option>
-							<option value='L'>Rotate Counterclockwise</option>
-						</select>
-					</span>
-					<span>
-						<input type='submit'>
-					</span>
-				</form>
-			</li>
-		</ul>
+	<li ng-repeat='robot in robotsPositions'>
+		<form ng-submit='updateRobot(robot._id, actionType)'>
+			<span>
+				Enter the action to make the robot do:
+			</span>
+			<span>
+				<select ng-model='actionType'>
+					<option value='M'>Move</option>
+					<option value='R'>Rotate Clockwise</option>
+					<option value='L'>Rotate Counterclockwise</option>
+				</select>
+			</span>
+			<span>
+				<input type='submit'></input>
+			</span>
+		</form>
 	</li>
 </ul>
