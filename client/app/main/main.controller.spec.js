@@ -9,11 +9,10 @@ describe('Controller: MainCtrl', function () {
       scope,
       $httpBackend;
 
-  // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/robots')
-      .respond([]);
+      .respond([{"_id":"1","position":"5 1 E"}, {"_id":"2","position":"3 3 E"}]);
 
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
@@ -24,5 +23,10 @@ describe('Controller: MainCtrl', function () {
   it('should attach the list of robots to the scope', function () {
     $httpBackend.flush();
     expect(scope.robots.length).toBe(2);
+  });
+
+  it('should return the position of each robot', function () {
+    $httpBackend.flush();
+    expect(scope.robots[0].position).toEqual("5 1 E");
   });
 });

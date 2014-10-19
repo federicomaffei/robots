@@ -2,7 +2,7 @@
 
 angular.module('robotsApp')
 .controller('MainCtrl', function ($scope, $http, socket, Robot) {
-  $scope.robots = ['1 1 N', '2 2 S'];
+  $scope.robots = [];
 
   $http.get('/api/robots').success(function(allRobots) {
     $scope.robots = allRobots;
