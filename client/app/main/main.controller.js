@@ -4,9 +4,9 @@ angular.module('robotsApp')
 .controller('MainCtrl', function ($scope, $http, socket, Robot) {
   $scope.robots = ['1 1 N', '2 2 S'];
 
-  $http.get('/api/robots').success(function(robotsPositions) {
-    $scope.robotsPositions = robotsPositions;
-    socket.syncUpdates('robot', $scope.robotsPositions);
+  $http.get('/api/robots').success(function(allRobots) {
+    $scope.robots = allRobots;
+    socket.syncUpdates('robot', $scope.allRobots);
   });
 
   $scope.addRobot = function() {
