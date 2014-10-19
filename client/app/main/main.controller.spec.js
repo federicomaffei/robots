@@ -23,6 +23,6 @@ describe('Controller: MainCtrl', function () {
   
   it('should attach the list of robots to the scope', function () {
     $httpBackend.flush();
-    expect(scope.robots.length).toBe(0);
+    expect(scope.robots.length).toBe(2);
   });
 });

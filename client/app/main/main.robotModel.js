@@ -1,62 +1,77 @@
 'use strict';
 
 angular.module('robotsApp')
-	.service('Robot', function(){
+.service('Robot', function(){
 
-		var xCoordinate;
-		var yCoordinate;
-		var orientation;
-		var cardinal;
-		this.cardinals = { 1: 'N' , 2: 'E', 3: 'S' , 4: 'W' };
-		this.orientations = {'N': 1 ,'E': 2 ,'S': 3 , 'W': 4 };
+	this.cardinals = { 1: 'N', 2: 'E', 3: 'S', 4: 'W' };
+	this.orientations = {'N': 1, 'E': 2, 'S': 3, 'W': 4 };
 
 
-		this.getCardinal = function() {
-			return this.cardinals[this.orientation];
-		};
+	this.getCardinal = function(orientation) {
+		return this.cardinals[orientation];
+	};
 
-		this.getOrientation = function() {
-			return this.orientations[this.cardinal];
-		};
+	this.getOrientation = function(cardinal) {
+		return this.orientations[cardinal];
+	};
 
-		this.getPosition = function() {
-			return this.xCoordinate + ' ' + this.yCoordinate + ' ' + this.getCardinal();
-		};
+	this.getPosition = function(xCoordinate, yCoordinate, cardinal) {
+		return xCoordinate + ' ' + yCoordinate + ' ' + cardinal;
+	};
 
-		this.rotate = function(direction) {
-			if(direction === 'R'){
-				if(this.orientation === 4){
-					this.orientation = 1;
-				}
-				else {
-					this.orientation += 1;
-				}
+	this.executeActions = function(actionList, startPosition) {
+		var endPosition = startPosition;
+		for(var index = 0; index < actionList.length; index++) {
+			var xCoordinate = parseInt(endPosition[0]);
+			var yCoordinate = parseInt(endPosition[2]);
+			var cardinal = endPosition[4];
+			if(actionList[index] === 'M'){
+				endPosition = this.move(xCoordinate, yCoordinate, cardinal);
 			}
-			if(direction === 'L'){
-				if(this.orientation === 1){
-					this.orientation = 4;
-				}
-				else {
-					this.orientation -= 1;
-				}
+			else {
+				cardinal = this.rotate(actionList[index], cardinal);
+				endPosition = this.getPosition(xCoordinate, yCoordinate, cardinal);
 			}
-		};
+		}
+		return endPosition;
+	};
 
-		this.move = function() {
-			switch(this.orientation) {
-				case 1:
-				this.yCoordinate += 1;
-				break;
-				case 2:
-				this.xCoordinate += 1;
-				break;
-				case 3:
-				this.yCoordinate -= 1;
-				break;
-				case 4:
-				this.xCoordinate -= 1;
-				break;
+	this.rotate = function(direction, cardinal) {
+		var orientation = this.getOrientation(cardinal);
+		if(direction === 'R'){
+			if(orientation === 4){
+				return this.getCardinal(1);
 			}
-		};
+			else {
+				return this.getCardinal(orientation += 1);
+			}
+		}
+		if(direction === 'L'){
+			if(orientation === 1){
+				return this.getCardinal(4);
+			}
+			else {
+				return this.getCardinal(orientation -= 1);
+			}
+		}
+	};
 
-	});
+	this.move = function(xCoordinate, yCoordinate, cardinal) {
+		var orientation = this.getOrientation(cardinal);
+		switch(orientation) {
+			case 1:
+			yCoordinate += 1;
+			break;
+			case 2:
+			xCoordinate += 1;
+			break;
+			case 3:
+			yCoordinate -= 1;
+			break;
+			case 4:
+			xCoordinate -= 1;
+			break;
+		}
+		return this.getPosition(xCoordinate, yCoordinate, cardinal);
+	};
+});

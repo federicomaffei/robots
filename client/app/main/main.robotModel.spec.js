@@ -11,58 +11,53 @@ describe('Model: Robot', function() {
 		});
 	});
 
-	it('is initialized with a 0 x coordinate by default', function(){
-		expect(robot.xCoordinate).toEqual(0);
+	it('can convert a number to a cardinal', function(){
+		expect(robot.getCardinal(1)).toEqual('N');
 	});
 
-	it('is initialized with a 0 y coordinate by default', function(){
-		expect(robot.yCoordinate).toEqual(0);
+	it('can convert a cardinal to a number', function(){
+		expect(robot.getOrientation('N')).toEqual(1);
 	});
 
-	it('is initialized with a default orientation of N', function(){
-		expect(robot.getOrientation()).toEqual('N');
+	it('can format the position string', function(){
+		expect(robot.getPosition(0, 0, 'N')).toEqual('0 0 N');
 	});
 
 	describe('rotating the robot', function(){
 		it('from north to east', function(){
-			robot.rotate('R');
-			expect(robot.getOrientation()).toEqual('E');
+			expect(robot.rotate('R', 'N')).toEqual('E');
 		});
 
 		it('from north to west', function(){
-			robot.rotate('L');
-			expect(robot.getOrientation()).toEqual('W');
+			expect(robot.rotate('L', 'N')).toEqual('W');
 		});
 
 		it('from west to north', function(){
-			robot.orientation = 4;
-			robot.rotate('R');
-			expect(robot.getOrientation()).toEqual('N'); 
+			expect(robot.rotate('R', 'W')).toEqual('N'); 
 		});
 	});
 
 	describe('moving the robot', function(){
 		it('towards north', function(){
-			robot.move();
-			expect(robot.yCoordinate).toEqual(1);
+			expect(robot.move(0, 0, 'N')).toEqual('0 1 N');
 		});
 		it('towards east', function(){
-			robot.rotate('R');
-			robot.move();
-			expect(robot.xCoordinate).toEqual(1);
+			expect(robot.move(0, 0, 'E')).toEqual('1 0 E');
 		});
 		it('towards west', function(){
-			robot.xCoordinate = 1;
-			robot.rotate('L');
-			robot.move();
-			expect(robot.xCoordinate).toEqual(0);
+			expect(robot.move(1, 1, 'W')).toEqual('0 1 W');
 		});
 		it('towards south', function(){
-			robot.yCoordinate = 1;
-			robot.rotate('L');
-			robot.rotate('L');
-			robot.move();
-			expect(robot.yCoordinate).toEqual(0);
+			expect(robot.move(1, 1, 'S')).toEqual('1 0 S');
+		});
+	});
+
+	describe('handling a list of actions', function(){
+		it('returns the expected value, as in acceptance test 1', function(){
+			expect(robot.executeActions('LMLMLMLMM', '1 2 N')).toEqual('1 3 N');
+		});
+		it('returns the expected value, as in acceptance test 2', function(){
+			expect(robot.executeActions('MMRMMRMRRM', '3 3 E')).toEqual('5 1 E');
 		});
 	});
 
