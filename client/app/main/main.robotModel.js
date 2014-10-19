@@ -6,15 +6,21 @@ angular.module('robotsApp')
 		var xCoordinate;
 		var yCoordinate;
 		var orientation;
-		this.cardinals = { 1: 'N', 2: 'E', 3: 'S', 4: 'W' };
+		var cardinal;
+		this.cardinals = { 1: 'N' , 2: 'E', 3: 'S' , 4: 'W' };
+		this.orientations = {'N': 1 ,'E': 2 ,'S': 3 , 'W': 4 };
 
 
-		this.getOrientation = function() {
+		this.getCardinal = function() {
 			return this.cardinals[this.orientation];
 		};
 
+		this.getOrientation = function() {
+			return this.orientations[this.cardinal];
+		};
+
 		this.getPosition = function() {
-			return this.xCoordinate + ' ' + this.yCoordinate + ' ' + this.getOrientation();
+			return this.xCoordinate + ' ' + this.yCoordinate + ' ' + this.getCardinal();
 		};
 
 		this.rotate = function(direction) {

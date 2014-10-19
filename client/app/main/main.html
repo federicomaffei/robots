@@ -35,16 +35,12 @@
 		</form>
 	</li>
 	<li ng-repeat='robot in robotsPositions'>
-		<form ng-submit='updateRobot(robot._id, actionType)'>
+		<form ng-submit='updateRobot(robot._id, actionList)'>
 			<span>
-				Enter the action to make the robot do:
+				Enter the list of actions for the robot:
 			</span>
 			<span>
-				<select ng-model='actionType'>
-					<option value='M'>Move</option>
-					<option value='R'>Rotate Clockwise</option>
-					<option value='L'>Rotate Counterclockwise</option>
-				</select>
+				<input type='text' ng-model='actionList'>
 			</span>
 			<span>
 				<input type='submit'></input>
