@@ -1,25 +1,20 @@
 <ul>
-	<form>
-		<li>
-			Enter the arena coordinates (width and length):
-		</li>
-		<li>
-			<span>
-				<input type='text' ng-model='arenaX'>
-			</span>
-			<span>
-				<input type='text' ng-model='arenaY'>
-			</span>
-		</li>
-		<li>
-			<span class='arenabutton'>
-				<input type='submit' ng-click='addBoundaries()'>
-			</span>
-			<span>
-				Arena size: {{arenaX}} {{arenaY}}
-			</span>
-		</li>
-	</form>
+	<li>
+		Change the arena coordinates (width and length):
+	</li>
+	<li>
+		<span>
+			<input type='text' ng-model='arenaX'>
+		</span>
+		<span>
+			<input type='text' ng-model='arenaY'>
+		</span>
+	</li>
+	<li>
+		<span>
+			Arena size: {{arenaX}} by {{arenaY}}
+		</span>
+	</li>
 </ul>
 <ul>
 	<form ng-submit='addRobot()'>

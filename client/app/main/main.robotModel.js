@@ -3,6 +3,8 @@
 angular.module('robotsApp')
 .service('Robot', function(){
 
+	var arenaX;
+	var arenaY;
 	this.cardinals = { 1: 'N', 2: 'E', 3: 'S', 4: 'W' };
 	this.orientations = {'N': 1, 'E': 2, 'S': 3, 'W': 4 };
 

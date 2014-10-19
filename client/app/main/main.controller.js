@@ -3,6 +3,9 @@
 angular.module('robotsApp')
 .controller('MainCtrl', function ($scope, $http, socket, Robot) {
 
+  $scope.arenaX = 5;
+  $scope.arenaY = 5;
+
   $http.get('/api/robots').success(function(robotsPositions) {
     $scope.robotsPositions = robotsPositions;
     socket.syncUpdates('robot', $scope.robotsPositions);
@@ -16,6 +19,7 @@ angular.module('robotsApp')
   };
 
   $scope.updateRobot = function(id, actionList) {
+    console.log($scope.arenaX);
     $http.get('/api/robots/' + id).success(function(robot) {
       var startPosition = robot.position;
       var endPosition = Robot.executeActions(actionList, startPosition);
