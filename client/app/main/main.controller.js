@@ -13,7 +13,7 @@ angular.module('robotsApp')
     var xCoordinate = $scope.firstX;
     var yCoordinate = $scope.firstY;
     var orientation = $scope.firstOrientation;
-    $http.post('/api/robots', {position: Robot.getPosition(xCoordinate, yCoordinate, orientation)});
+    $http.post('/api/robots', {position: Robot.getPosition(xCoordinate, yCoordinate, Robot.getCardinal(orientation))});
   };
 
   $scope.updateRobot = function(id, actionList) {
