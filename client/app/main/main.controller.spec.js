@@ -13,7 +13,6 @@ describe('Controller: MainCtrl', function () {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/robots')
       .respond([{'_id':'1','position':'5 1 E'}, {'_id':'2','position':'3 3 E'}]);
-
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
@@ -22,11 +21,11 @@ describe('Controller: MainCtrl', function () {
   
   it('should attach the list of robots to the scope', function () {
     $httpBackend.flush();
-    expect(scope.robots.length).toBe(2);
+    expect(scope.robotsPositions.length).toBe(2);
   });
 
   it('should return the position of each robot', function () {
     $httpBackend.flush();
-    expect(scope.robots[0].position).toEqual('5 1 E');
+    expect(scope.robotsPositions[0].position).toEqual('5 1 E');
   });
 });
