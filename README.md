@@ -16,7 +16,7 @@ This is my solution for the robots test.
 
 The project is built as a MEAN (MongoDB, Express, Angular, Node.js) application. To generate the basic codebase I used the Yeoman Angular Generator.
 
-To describe the behaviour of a robot I used an Angular service. This allowed me to separate the application logic in a reusable object, which is useful to handle more than one robot. I then inject the Robot service in the AngularJS controller, which allows me to perform get, post and delete requests, and save the robot related data in JSON format, with the help of a MongoDB schema.
+To describe the behaviour of a robot I used an Angular service. This allowed me to separate the application logic in a reusable object, which is useful to handle more than one robot. I then inject the Robot service in the AngularJS controller, which allows me to perform get, post and delete requests to a server (created with the Express framework), and save the robot related data in JSON format, with the help of a MongoDB schema.
 
 
 ###Drawbacks and possible improvements:
