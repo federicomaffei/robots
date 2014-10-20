@@ -1,13 +1,13 @@
 <ul>
 	<li>
-		Change the arena coordinates (width and length):
+		1) Set the arena coordinates (width and length):
 	</li>
 	<li>
 		<span>
-			<input type='text' ng-model='upperX'>
+			<input type='number' ng-model='upperX'>
 		</span>
 		<span>
-			<input type='text' ng-model='upperY'>
+			<input type='number' ng-model='upperY'>
 		</span>
 	</li>
 	<li>
@@ -19,14 +19,14 @@
 <ul>
 	<form ng-submit='addRobot()'>
 		<li>
-			Create a robot entering its first position (x, y and orientation):
+			2) Create a robot entering its first position (x, y and orientation):
 		</li>
 		<li>
 			<span>
-				<input type='text' ng-model='firstX'>
+				<input type="number" ng-model='firstX' min="1" max="{{upperX}}">
 			</span>
 			<span>
-				<input type='text' ng-model='firstY'>
+				<input type="number" ng-model='firstY' min="1" max="{{upperY}}">
 			</span>
 			<span>
 				<select ng-model='firstOrientation'>
@@ -44,6 +44,7 @@
 		</li>
 	</form>
 </ul>
+<p>3) Move the robots!</p>
 <ul class='robot-list' ng-repeat='robot in robotsPositions'>
 	<form ng-submit='updateRobot(robot._id, actionList)'>
 		<li>
@@ -53,8 +54,8 @@
 			<input type='text' ng-model='actionList'>
 		</li>
 		<li>
-		<span>
-			<input type='submit'></input>
+			<span>
+				<input type='submit'></input>
 			</span>
 			<span>
 				<button ng-click='deleteRobot(robot._id)'>Delete</button>
