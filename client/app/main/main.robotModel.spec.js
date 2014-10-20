@@ -9,6 +9,7 @@ describe('Model: Robot', function() {
 		inject(function(Robot) {
 			robot = Robot;
 		});
+		spyOn(console, 'log');
 	});
 
 	it('can convert a number to a cardinal', function(){
@@ -56,14 +57,13 @@ describe('Model: Robot', function() {
 			expect(robot.move(1, 1, 'S')).toEqual('1 0 S');
 		});
 		it('if goes out of boundaries, logs a message.', function(){
-			console.log = jasmine.createSpy('log');
 			robot.setBoundaries(5, 5);
 			robot.move(5, 5, 'N');
-			expect(console.log).toHaveBeenCalledWith('out of upper y bounds, unable to move!')
+			expect(console.log).toHaveBeenCalledWith('out of upper y bounds, unable to move!');
 		});
 		it('if goes out of boundaries, does not move.', function(){
 			robot.setBoundaries(5, 5);
-			expect(robot.move(5, 5, 'N')).toEqual('5 5 N')
+			expect(robot.move(5, 5, 'N')).toEqual('5 5 N');
 		});
 	});
 
