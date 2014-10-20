@@ -17,6 +17,7 @@ angular.module('robotsApp')
     var orientation = $scope.firstOrientation;
     Robot.setBoundaries($scope.upperX, $scope.upperY);
     $http.post('/api/robots', {position: Robot.getPosition(xCoordinate, yCoordinate, Robot.getCardinal(orientation))});
+
   };
 
   $scope.updateRobot = function(id, actionList) {
