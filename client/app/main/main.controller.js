@@ -3,8 +3,8 @@
 angular.module('robotsApp')
 .controller('MainCtrl', function ($scope, $http, socket, Robot) {
 
-  $scope.arenaX = 5;
-  $scope.arenaY = 5;
+  $scope.upperX = 5; //default arena size
+  $scope.upperY = 5; //default arena size
 
   $http.get('/api/robots').success(function(robotsPositions) {
     $scope.robotsPositions = robotsPositions;
@@ -15,11 +15,12 @@ angular.module('robotsApp')
     var xCoordinate = $scope.firstX;
     var yCoordinate = $scope.firstY;
     var orientation = $scope.firstOrientation;
+    Robot.setBoundaries($scope.upperX, $scope.upperY);
     $http.post('/api/robots', {position: Robot.getPosition(xCoordinate, yCoordinate, Robot.getCardinal(orientation))});
   };
 
   $scope.updateRobot = function(id, actionList) {
-    console.log($scope.arenaX);
+    Robot.setBoundaries($scope.upperX, $scope.upperY);
     $http.get('/api/robots/' + id).success(function(robot) {
       var startPosition = robot.position;
       var endPosition = Robot.executeActions(actionList, startPosition);

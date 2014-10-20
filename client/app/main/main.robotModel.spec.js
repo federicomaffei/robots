@@ -23,6 +23,11 @@ describe('Model: Robot', function() {
 		expect(robot.getPosition(0, 0, 'N')).toEqual('0 0 N');
 	});
 
+	it('can return grid boundaries', function() {
+		robot.setBoundaries(5, 5);
+		expect(robot.upperX).toEqual(5);
+	});
+
 	describe('rotating the robot', function(){
 		it('from north to east', function(){
 			expect(robot.rotate('R', 'N')).toEqual('E');

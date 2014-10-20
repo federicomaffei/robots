@@ -3,8 +3,8 @@
 angular.module('robotsApp')
 .service('Robot', function(){
 
-	var arenaX;
-	var arenaY;
+	this.upperX = 5; //default
+	this.upperY = 5; //default
 	this.cardinals = { 1: 'N', 2: 'E', 3: 'S', 4: 'W' };
 	this.orientations = {'N': 1, 'E': 2, 'S': 3, 'W': 4 };
 
@@ -19,6 +19,11 @@ angular.module('robotsApp')
 
 	this.getPosition = function(xCoordinate, yCoordinate, cardinal) {
 		return xCoordinate + ' ' + yCoordinate + ' ' + cardinal;
+	};
+
+	this.setBoundaries = function(x, y) {
+		this.upperX = x;
+		this.upperY = y;
 	};
 
 	this.executeActions = function(actionList, startPosition) {
