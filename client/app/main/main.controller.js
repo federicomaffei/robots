@@ -28,8 +28,8 @@ angular.module('robotsApp')
     });
   };
 
-  $scope.deleteRobot = function(robot) {
-    $http.delete('/api/robot/' + robot._id);
+  $scope.deleteRobot = function(id) {
+    $http.delete('/api/robots/' + id);
   };
 
   $scope.$on('$destroy', function () {

@@ -3,7 +3,6 @@
 var _ = require('lodash');
 var Robot = require('./robot.model');
 
-// Get list of robots
 exports.index = function(req, res) {
   Robot.find(function (err, robots) {
     if(err) { return handleError(res, err); }
@@ -11,7 +10,6 @@ exports.index = function(req, res) {
   });
 };
 
-// Get a single robot
 exports.show = function(req, res) {
   Robot.findById(req.params.id, function (err, robot) {
     if(err) { return handleError(res, err); }
@@ -20,7 +18,6 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new robot in the DB.
 exports.create = function(req, res) {
   Robot.create(req.body, function(err, robot) {
     if(err) { return handleError(res, err); }
@@ -28,7 +25,6 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing robot in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   Robot.findById(req.params.id, function (err, robot) {
@@ -42,7 +38,6 @@ exports.update = function(req, res) {
   });
 };
 
-// Deletes a robot from the DB.
 exports.destroy = function(req, res) {
   Robot.findById(req.params.id, function (err, robot) {
     if(err) { return handleError(res, err); }

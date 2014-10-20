@@ -53,7 +53,12 @@
 			<input type='text' ng-model='actionList'>
 		</li>
 		<li>
+		<span>
 			<input type='submit'></input>
+			</span>
+			<span>
+				<button ng-click='deleteRobot(robot._id)'>Delete</button>
+			</span>
 		</li>
 		<li class='position'>
 			Robot {{$index + 1}} position: {{robot.position}}
