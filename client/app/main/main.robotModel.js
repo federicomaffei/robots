@@ -28,11 +28,11 @@ angular.module('robotsApp')
 
 	this.executeActions = function(actionList, startPosition) {
 		var endPosition = startPosition;
-		for(var index = 0; index < actionList.length; index++) {
+		for (var index = 0; index < actionList.length; index++) {
 			var xCoordinate = parseInt(endPosition[0]);
 			var yCoordinate = parseInt(endPosition[2]);
 			var cardinal = endPosition[4];
-			if(actionList[index] === 'M'){
+			if (actionList[index] === 'M'){
 				endPosition = this.move(xCoordinate, yCoordinate, cardinal);
 			}
 			else {
@@ -45,16 +45,16 @@ angular.module('robotsApp')
 
 	this.rotate = function(direction, cardinal) {
 		var orientation = this.getOrientation(cardinal);
-		if(direction === 'R'){
-			if(orientation === 4){
+		if (direction === 'R'){
+			if (orientation === 4){
 				return this.getCardinal(1);
 			}
 			else {
 				return this.getCardinal(orientation += 1);
 			}
 		}
-		if(direction === 'L'){
-			if(orientation === 1){
+		if (direction === 'L'){
+			if (orientation === 1){
 				return this.getCardinal(4);
 			}
 			else {
@@ -65,18 +65,37 @@ angular.module('robotsApp')
 
 	this.move = function(xCoordinate, yCoordinate, cardinal) {
 		var orientation = this.getOrientation(cardinal);
-		switch(orientation) {
+		switch (orientation) {
 			case 1:
-			yCoordinate += 1;
+			if (yCoordinate < this.upperY) {
+				yCoordinate += 1;
+			}
+			else {
+				console.log('out of upper y bounds, unable to move!');
+			}
 			break;
 			case 2:
-			xCoordinate += 1;
+			if (yCoordinate < this.upperX) {
+				xCoordinate += 1;
+			}
+			else {
+				console.log('out of upper x bounds, unable to move!');
+			}
 			break;
 			case 3:
-			yCoordinate -= 1;
+			if (yCoordinate > 0) {
+				yCoordinate -= 1;
+			} else {
+				console.log('out of lower y bounds, unable to move!');
+			}
 			break;
 			case 4:
-			xCoordinate -= 1;
+			if (xCoordinate > 0) {
+				xCoordinate -= 1;
+			}
+			else {
+				console.log('out of lower x bounds, unable to move!');
+			}
 			break;
 		}
 		return this.getPosition(xCoordinate, yCoordinate, cardinal);
