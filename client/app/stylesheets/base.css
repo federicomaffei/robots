@@ -217,7 +217,7 @@
 	input[type="password"],
 	input[type="email"],
 	textarea,
-	select {
+	select {	
 		border: 1px solid #ccc;
 		padding: 6px 4px;
 		outline: none;
