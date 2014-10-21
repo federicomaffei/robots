@@ -30,6 +30,6 @@ describe('Main View', function() {
           expect(element(by.css("#position1")).getText()).toBe('Robot 1 position: 1 3 N');
         });
       });
-    });;
+    });
   });
 });
