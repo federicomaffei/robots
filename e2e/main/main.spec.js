@@ -8,9 +8,12 @@ describe('Main View', function() {
     page = require('./main.po');
   });
 
-  it('should include YO with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/YO\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+  it('should create robot with correct data', function() {
+    page.upperxInput.sendKeys("1");
+    page.upperyInput.sendKeys("1");
+    element(By.model('firstOrientation')).$('[value="1"]').click();
+    page.robotSubmit.click().then(function(){
+      expect(element(by.css("#position1")).getText()).toBe('Robot 1 position: 1 1 N');
+    });
   });
 });

@@ -11,7 +11,7 @@
 		</span>
 	</li>
 	<li>
-		<span>
+		<span id='arenasize'>
 			Arena size: {{upperX}} by {{upperY}}
 		</span>
 	</li>
@@ -23,13 +23,13 @@
 		</li>
 		<li>
 			<span>
-				<input type="number" ng-model='firstX' min="1" max="{{upperX}}">
+				<input type="number" id='upperxinput' ng-model='firstX' min="1" max="{{upperX}}">
 			</span>
 			<span>
-				<input type="number" ng-model='firstY' min="1" max="{{upperY}}">
+				<input type="number" id='upperyinput' ng-model='firstY' min="1" max="{{upperY}}">
 			</span>
 			<span>
-				<select ng-model='firstOrientation'>
+				<select id='orientationinput' ng-model='firstOrientation'>
 					<option value='1'>North</option>
 					<option value='2'>East</option>
 					<option value='3'>South</option>
@@ -39,7 +39,7 @@
 		</li>
 		<li>
 			<span>
-				<input type='submit'></input>
+				<input type='submit' id='robotsubmit'></input>
 			</span>
 		</li>
 	</form>
@@ -61,7 +61,7 @@
 				<button ng-click='deleteRobot(robot._id)'>Delete</button>
 			</span>
 		</li>
-		<li class='position'>
+		<li id='position{{$index + 1}}'>
 			Robot {{$index + 1}} position: {{robot.position}}
 		</li>
 	</ul>

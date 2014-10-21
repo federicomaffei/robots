@@ -3,13 +3,15 @@
  * https://docs.google.com/presentation/d/1B6manhG0zEXkC-H-tPo2vwU06JhL8w9-XCF9oehXzAQ
  */
 
-'use strict';
+ 'use strict';
 
-var MainPage = function() {
-  this.heroEl = element(by.css('.hero-unit'));
-  this.h1El = this.heroEl.element(by.css('h1'));
-  this.imgEl = this.heroEl.element(by.css('img'));
-};
+ var MainPage = function() {
+ 	this.upperxInput = element(by.css('#upperxinput'));
+ 	this.upperyInput = element(by.css('#upperyinput'));
+ 	this.arenaSize = element(by.css('#arenasize'));
+ 	this.robotSubmit = element(by.css('#robotsubmit'));
+ 	this.selectOrientation = element(by.css('#orientationinput'));
+ };
 
-module.exports = new MainPage();
+ module.exports = new MainPage();
 
