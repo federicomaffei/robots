@@ -51,11 +51,11 @@
 			Robot {{$index + 1}} list of moves:
 		</li>
 		<li>
-			<input type='text' ng-model='actionList'>
+			<input id='moveinput{{$index + 1}}' type='text' ng-model='actionList'>
 		</li>
 		<li>
 			<span>
-				<input type='submit'></input>
+				<input id='movebutton{{$index + 1}}' type='submit'></input>
 			</span>
 			<span>
 				<button ng-click='deleteRobot(robot._id)'>Delete</button>

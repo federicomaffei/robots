@@ -28,7 +28,7 @@ The API containing the data in JSON format is accessible at the */api/robots/* p
 
 * The */dist* folder contains the Grunt-autocompiled files that are deployed to Heroku.
 
-* The */e2e* folder contains the End to End tests.
+* The */e2e* folder contains Protractor End to End tests.
 
 * The */node-modules* folder contains all the Node.js modules.
 
@@ -47,5 +47,6 @@ cd robots
 npm install
 bower install
 grunt test
+grunt test:e2e
 grunt serve
 ```
