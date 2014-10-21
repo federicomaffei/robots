@@ -16,6 +16,8 @@ exports.config = {
   // Tests for browsers other than chrome will not run.
   chromeOnly: true,
 
+  chromeDriver: 'node_modules/grunt-protractor-runner/node_modules/protractor/selenium/chromedriver',
+
   // list of files / patterns to load in the browser
   specs: [
     'e2e/**/*.spec.js'
