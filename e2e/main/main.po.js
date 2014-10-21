@@ -8,9 +8,7 @@
  var MainPage = function() {
  	this.upperxInput = element(by.css('#upperxinput'));
  	this.upperyInput = element(by.css('#upperyinput'));
- 	this.arenaSize = element(by.css('#arenasize'));
  	this.robotSubmit = element(by.css('#robotsubmit'));
- 	this.selectOrientation = element(by.css('#orientationinput'));
  };
 
  module.exports = new MainPage();
