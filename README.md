@@ -16,10 +16,11 @@ This is my solution for the robots test.
 
 The project is built as a MEAN (MongoDB, Express, Angular, Node.js) application. To generate the boilerplate codebase I used the Yeoman Angular Generator.
 
-To describe the behaviour of a robot I used an Angular service. This allowed me to separate the application logic in a reusable object, which is useful to handle more than one robot. I then inject the Robot service in the AngularJS controller, which allows me to perform get, post and delete requests to a server (created with the Express framework), and save the robot related data in JSON format, with the help of a MongoDB schema.
+To describe the behaviour of a robot I used an Angular service.
+This allowed me to separate the application logic in a reusable object, which is useful to handle more than one robot.
+The app injects the Robot service in the AngularJS controller, which performs get, post and delete requests to a server (built with the Express framework), and saves robot-related data in JSON format, accessible as a RESTful API.
 
 The API containing the data in JSON format is accessible at the */api/robots/* path, both locally and on Heroku.
-
 
 ###File structure:
 
@@ -38,8 +39,13 @@ The API containing the data in JSON format is accessible at the */api/robots/* p
 To run the application live on Heroku follow this link:
 [http://frobots.herokuapp.com/](http://frobots.herokuapp.com/)
 
-To clone the repository from GitHub execute from command line:
+To clone the repository from GitHub and test or run the app execute from command line:
 
 ```bash
 git clone https://github.com/federicomaffei/robots.git
+cd robots
+npm install
+bower install
+grunt test
+grunt serve
 ```
