@@ -24,7 +24,7 @@ The API containing the data in JSON format is accessible at the */api/robots/* p
 
 ###File structure:
 
-* The */client* folder contains all the client side code, with the main Angular view, controller, model and related tests in the */app/main* folder. And separated folders for static files such as stylesheets and images.
+* The */client* folder contains all the client side code, with the main Angular view, controller, model and related unit tests in the */app/main* folder. And separated folders for static files such as stylesheets and images.
 
 * The */dist* folder contains the Grunt-autocompiled files that are deployed to Heroku.
 
