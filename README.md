@@ -50,3 +50,9 @@ grunt test
 grunt test:e2e
 grunt serve
 ```
+
+In another command line tab the MongoDB database has to be launched:
+
+```bash
+mongod
+```

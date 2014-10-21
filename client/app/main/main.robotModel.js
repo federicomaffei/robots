@@ -6,15 +6,18 @@ angular.module('robotsApp')
 	this.upperX = 5; //default
 	this.upperY = 5; //default
 	this.cardinals = { 1: 'N', 2: 'E', 3: 'S', 4: 'W' };
-	this.orientations = {'N': 1, 'E': 2, 'S': 3, 'W': 4 };
-
 
 	this.getCardinal = function(orientation) {
 		return this.cardinals[orientation];
 	};
 
 	this.getOrientation = function(cardinal) {
-		return this.orientations[cardinal];
+		var key;
+		for (key in this.cardinals) {
+			if (this.cardinals[key] === cardinal) {
+			 return parseInt(key);
+			}
+		}
 	};
 
 	this.getPosition = function(xCoordinate, yCoordinate, cardinal) {
