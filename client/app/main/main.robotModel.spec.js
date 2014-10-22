@@ -89,5 +89,11 @@ describe('Model: Robot', function() {
 		it('returns the expected value, as in acceptance test 2', function(){
 			expect(robot.executeActions('MMRMMRMRRM', '3 3 E')).toEqual('5 1 E');
 		});
+		it('returns the expected value, as in new acceptance test 1', function(){
+			expect(robot.executeActions('MMLMMLMMRBB', '0 0 E')).toEqual('0 0 N');
+		});
+		it('returns the expected value, as in new acceptance test 2', function(){
+			expect(robot.executeActions('BLBLBLBL', '4 5 W')).toEqual('4 5 W');
+		});
 	});
 });

@@ -38,6 +38,10 @@ angular.module('robotsApp')
 			if (actionList[index] === 'M'){
 				endPosition = this.move(xCoordinate, yCoordinate, cardinal);
 			}
+			else if (actionList[index] === 'B'){
+				endPosition = this.moveBackwards(xCoordinate, yCoordinate, cardinal);
+			}
+
 			else {
 				cardinal = this.rotate(actionList[index], cardinal);
 				endPosition = this.getPosition(xCoordinate, yCoordinate, cardinal);
