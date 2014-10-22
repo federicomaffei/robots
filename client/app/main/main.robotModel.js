@@ -36,7 +36,7 @@ angular.module('robotsApp')
 			var yCoordinate = parseInt(endPosition[2]);
 			var cardinal = endPosition[4];
 			if (actionList[index] === 'M'){
-				endPosition = this.move(xCoordinate, yCoordinate, cardinal);
+				endPosition = this.moveForward(xCoordinate, yCoordinate, cardinal);
 			}
 			else if (actionList[index] === 'B'){
 				endPosition = this.moveBackwards(xCoordinate, yCoordinate, cardinal);
@@ -70,7 +70,7 @@ angular.module('robotsApp')
 		}
 	};
 
-	this.move = function(xCoordinate, yCoordinate, cardinal) {
+	this.moveForward = function(xCoordinate, yCoordinate, cardinal) {
 		var orientation = this.getOrientation(cardinal);
 		switch (orientation) {
 			case 1:

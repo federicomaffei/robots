@@ -45,25 +45,25 @@ describe('Model: Robot', function() {
 
 	describe('moving the robot forward', function(){
 		it('correctly towards north', function(){
-			expect(robot.move(0, 0, 'N')).toEqual('0 1 N');
+			expect(robot.moveForward(0, 0, 'N')).toEqual('0 1 N');
 		});
 		it('correctly towards east', function(){
-			expect(robot.move(0, 0, 'E')).toEqual('1 0 E');
+			expect(robot.moveForward(0, 0, 'E')).toEqual('1 0 E');
 		});
 		it('correctly towards west', function(){
-			expect(robot.move(1, 1, 'W')).toEqual('0 1 W');
+			expect(robot.moveForward(1, 1, 'W')).toEqual('0 1 W');
 		});
 		it('correctly towards south', function(){
-			expect(robot.move(1, 1, 'S')).toEqual('1 0 S');
+			expect(robot.moveForward(1, 1, 'S')).toEqual('1 0 S');
 		});
 		it('if goes out of boundaries, logs a message.', function(){
 			robot.setBoundaries(5, 5);
-			robot.move(5, 5, 'N');
+			robot.moveForward(5, 5, 'N');
 			expect(console.log).toHaveBeenCalledWith('out of upper y bounds, unable to move!');
 		});
 		it('if goes out of boundaries, does not move.', function(){
 			robot.setBoundaries(5, 5);
-			expect(robot.move(5, 5, 'N')).toEqual('5 5 N');
+			expect(robot.moveForward(5, 5, 'N')).toEqual('5 5 N');
 		});
 	});
 
