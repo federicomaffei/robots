@@ -103,4 +103,23 @@ angular.module('robotsApp')
 		}
 		return this.getPosition(xCoordinate, yCoordinate, cardinal);
 	};
+
+	this.moveBackwards = function(xCoordinate, yCoordinate, cardinal) {
+		var orientation = this.getOrientation(cardinal);
+		switch (orientation) {
+			case 1:
+				yCoordinate -= 1;
+			break;
+			case 2:
+				xCoordinate -= 1;
+			break;
+			case 3:
+				yCoordinate += 1;
+			break;
+			case 4:
+				xCoordinate += 1;
+			break;
+		}
+		return this.getPosition(xCoordinate, yCoordinate, cardinal);
+	};
 });

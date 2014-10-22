@@ -43,7 +43,7 @@ describe('Model: Robot', function() {
 		});
 	});
 
-	describe('moving the robot', function(){
+	describe('moving the robot forward', function(){
 		it('correctly towards north', function(){
 			expect(robot.move(0, 0, 'N')).toEqual('0 1 N');
 		});
@@ -64,6 +64,21 @@ describe('Model: Robot', function() {
 		it('if goes out of boundaries, does not move.', function(){
 			robot.setBoundaries(5, 5);
 			expect(robot.move(5, 5, 'N')).toEqual('5 5 N');
+		});
+	});
+
+	describe('moving the robot backwards', function(){
+		it('correctly from north', function(){
+			expect(robot.moveBackwards(1, 1, 'N')).toEqual('1 0 N');
+		});
+		it('correctly from east', function(){
+			expect(robot.moveBackwards(1, 1, 'E')).toEqual('0 1 E');
+		});
+		it('correctly towards west', function(){
+			expect(robot.moveBackwards(1, 1, 'W')).toEqual('2 1 W');
+		});
+		it('correctly towards south', function(){
+			expect(robot.moveBackwards(1, 1, 'S')).toEqual('1 2 S');
 		});
 	});
 
