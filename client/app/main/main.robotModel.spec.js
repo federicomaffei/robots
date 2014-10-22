@@ -43,7 +43,7 @@ describe('Model: Robot', function() {
 		});
 	});
 
-	describe('moving the robot', function(){
+	describe('moving the robot forward', function(){
 		it('correctly towards north', function(){
 			expect(robot.move(0, 0, 'N')).toEqual('0 1 N');
 		});
@@ -67,12 +67,33 @@ describe('Model: Robot', function() {
 		});
 	});
 
+	describe('moving the robot backwards', function(){
+		it('correctly from north', function(){
+			expect(robot.moveBackwards(1, 1, 'N')).toEqual('1 0 N');
+		});
+		it('correctly from east', function(){
+			expect(robot.moveBackwards(1, 1, 'E')).toEqual('0 1 E');
+		});
+		it('correctly towards west', function(){
+			expect(robot.moveBackwards(1, 1, 'W')).toEqual('2 1 W');
+		});
+		it('correctly towards south', function(){
+			expect(robot.moveBackwards(1, 1, 'S')).toEqual('1 2 S');
+		});
+	});
+
 	describe('handling the list of actions', function(){
 		it('returns the expected value, as in acceptance test 1', function(){
 			expect(robot.executeActions('LMLMLMLMM', '1 2 N')).toEqual('1 3 N');
 		});
 		it('returns the expected value, as in acceptance test 2', function(){
 			expect(robot.executeActions('MMRMMRMRRM', '3 3 E')).toEqual('5 1 E');
+		});
+		it('returns the expected value, as in new acceptance test 1', function(){
+			expect(robot.executeActions('MMLMMLMMRBB', '0 0 E')).toEqual('0 0 N');
+		});
+		it('returns the expected value, as in new acceptance test 2', function(){
+			expect(robot.executeActions('BLBLBLBL', '4 5 W')).toEqual('4 5 W');
 		});
 	});
 });

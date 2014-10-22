@@ -38,6 +38,10 @@ angular.module('robotsApp')
 			if (actionList[index] === 'M'){
 				endPosition = this.move(xCoordinate, yCoordinate, cardinal);
 			}
+			else if (actionList[index] === 'B'){
+				endPosition = this.moveBackwards(xCoordinate, yCoordinate, cardinal);
+			}
+
 			else {
 				cardinal = this.rotate(actionList[index], cardinal);
 				endPosition = this.getPosition(xCoordinate, yCoordinate, cardinal);
@@ -99,6 +103,25 @@ angular.module('robotsApp')
 			else {
 				console.log('out of lower x bounds, unable to move!');
 			}
+			break;
+		}
+		return this.getPosition(xCoordinate, yCoordinate, cardinal);
+	};
+
+	this.moveBackwards = function(xCoordinate, yCoordinate, cardinal) {
+		var orientation = this.getOrientation(cardinal);
+		switch (orientation) {
+			case 1:
+				yCoordinate -= 1;
+			break;
+			case 2:
+				xCoordinate -= 1;
+			break;
+			case 3:
+				yCoordinate += 1;
+			break;
+			case 4:
+				xCoordinate += 1;
 			break;
 		}
 		return this.getPosition(xCoordinate, yCoordinate, cardinal);
